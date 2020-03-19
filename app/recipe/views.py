@@ -3,6 +3,9 @@ from rest_framework.response import Response
 from rest_framework import viewsets, mixins, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
+from pinax.eventlog.models import log
+from django.contrib.contenttypes.models import ContentType
+import time
 
 from core.models import Tag, Ingredient, Recipe
 
@@ -27,7 +30,8 @@ class BaseRecipeAttributes(viewsets.GenericViewSet,
 
     def perform_create(self, serializer):
         """ Create a new object"""
-        serializer.save(user=self.request.user)
+        obj = serializer.save(user=self.request.user)
+        log(user=self.request.user, action='CREATED', obj=obj)
 
 
 class TagViewSet(BaseRecipeAttributes):

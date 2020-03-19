@@ -23,6 +23,8 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2')
         }),
     )
+    search_fields = ('email',)
+
 
 
 admin.site.register(models.User, UserAdmin)
