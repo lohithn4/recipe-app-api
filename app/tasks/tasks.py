@@ -1,10 +1,10 @@
 from __future__ import absolute_import, unicode_literals
-import os
-from django.contrib.auth import get_user_model
-from pinax.eventlog.models import log, Log
-from pinax.eventlog.signals import event_logged
-from django.utils import timezone
-from django.contrib.contenttypes.models import ContentType
+# import os
+# from django.contrib.auth import get_user_model
+# from pinax.eventlog.models import log, Log
+# from pinax.eventlog.signals import event_logged
+# from django.utils import timezone
+# from django.contrib.contenttypes.models import ContentType
 
 from app import celery_app
 
